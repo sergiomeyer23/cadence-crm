@@ -2,16 +2,16 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: retention
-      POSTGRES_PASSWORD: retention
-      POSTGRES_DB: retention_gym
+      POSTGRES_USER: cadence
+      POSTGRES_PASSWORD: cadence
+      POSTGRES_DB: cadence
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U retention -d retention_gym"]
+      test: ["CMD-SHELL", "pg_isready -U cadence -d cadence"]
       interval: 3s
       timeout: 3s
       retries: 20
