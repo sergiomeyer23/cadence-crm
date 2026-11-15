@@ -7,6 +7,7 @@ import { registerAuth, requireAuth } from './auth';
 import { registerBullBoard } from './bull-board';
 import type { Deps } from './context';
 import { registerErrorHandler } from './errors';
+import { publicRoutes } from './routes/public';
 import { radarRoutes } from './routes/radar';
 import { studentRoutes } from './routes/students';
 
@@ -30,7 +31,13 @@ async function check(probe: () => Promise<unknown>): Promise<'ok' | 'error'> {
   }
 }
 
-export async function buildApp(deps: Deps, options: { logger?: boolean } = {}) {
+interface BuildOptions {
+  logger?: boolean;
+  /** Prefixo das chaves do rate limit no Redis; os testes usam um próprio. */
+  rateLimitNamespace?: string;
+}
+
+export async function buildApp(deps: Deps, options: BuildOptions = {}) {
   const app = Fastify({
     logger: options.logger === false ? false : { level: process.env.LOG_LEVEL ?? 'info' },
     // Atrás de Vercel, Render ou Railway o IP real e o protocolo chegam em X-Forwarded-*.
@@ -69,6 +76,8 @@ export async function buildApp(deps: Deps, options: { logger?: boolean } = {}) {
       checks: { database, redis },
     });
   });
+
+  await publicRoutes(app, deps, { rateLimitNamespace: options.rateLimitNamespace ?? 'cadence-rate-limit-' });
 
   await app.register(async (protectedScope) => {
     protectedScope.addHook('preHandler', requireAuth);

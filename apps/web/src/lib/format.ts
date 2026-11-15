@@ -88,8 +88,12 @@ export function frequencyText(card: Pick<RadarCard, 'checkInsInWindow' | 'expect
 
 export function timelineText(item: TimelineItem): { title: string; detail?: string } {
   switch (item.type) {
-    case 'ENROLLED':
-      return { title: 'Matrícula', detail: `Meta de ${plural(item.payload.weeklyGoal, 'treino', 'treinos')} por semana` };
+    case 'ENROLLED': {
+      const goal = `Meta de ${plural(item.payload.weeklyGoal, 'treino', 'treinos')} por semana`;
+      if (item.payload.via !== 'WEBSITE') return { title: 'Matrícula', detail: goal };
+      const origin = item.payload.utmSource ? `. Origem: ${item.payload.utmSource}` : '';
+      return { title: 'Cadastro pelo site', detail: `${goal}${origin}` };
+    }
     case 'CHECK_IN':
       return { title: 'Treino', detail: SOURCE_LABEL[item.payload.source] };
     case 'CONTACT':

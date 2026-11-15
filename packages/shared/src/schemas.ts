@@ -55,3 +55,23 @@ export type RadarScope = (typeof RADAR_SCOPES)[number];
 export const radarQuerySchema = z.object({
   scope: z.enum(RADAR_SCOPES).optional(),
 });
+
+/** Formulário público do widget; o campo `website` é uma isca para bots e deve vir vazio. */
+export const publicLeadSchema = z
+  .object({
+    name: z.string().trim().min(2).max(120),
+    email: z
+      .union([z.email().trim().toLowerCase().max(160), z.literal('')])
+      .nullish()
+      .transform((value) => (value ? value : null)),
+    phone: nullableText(30),
+    weeklyGoal: z.number().int().min(1).max(7).default(3),
+    message: nullableText(500),
+    utmSource: nullableText(100),
+    website: z.string().max(200).optional(),
+  })
+  .refine((lead) => lead.email || lead.phone, {
+    message: 'Informe um e-mail ou telefone para a academia retornar o contato.',
+    path: ['email'],
+  });
+export type PublicLeadInput = z.input<typeof publicLeadSchema>;

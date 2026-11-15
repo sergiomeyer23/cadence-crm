@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { StudentFormDialog } from '../student/StudentFormDialog';
 import { StudentSheet } from '../student/StudentSheet';
 import { Board } from './Board';
+import { EmbedDialog } from './EmbedDialog';
 import { ReportStrip } from './ReportStrip';
 import { SimulateButton } from './SimulateButton';
 import { useMovedCards } from './useMovedCards';
@@ -68,6 +69,7 @@ export function RadarPage({ user }: { user: SessionUser }) {
               <UserPlus />
               Novo aluno
             </Button>
+            {user.role === 'OWNER' && <EmbedDialog workspaceId={user.workspace.id} />}
             {user.role === 'OWNER' && clock && <SimulateButton clock={clock} />}
             <div className="flex items-center gap-2 border-l pl-3">
               <span className="text-sm text-muted-foreground">{user.name}</span>

@@ -72,7 +72,8 @@ export interface StudentDetail extends RadarCard {
 }
 
 export interface TimelinePayloads {
-  ENROLLED: { weeklyGoal: number };
+  /** `via: 'WEBSITE'` quando o aluno chegou pelo widget do site da academia. */
+  ENROLLED: { weeklyGoal: number; via?: 'WEBSITE'; utmSource?: string | null };
   CHECK_IN: { checkInId: string; source: CheckInSource };
   CONTACT: { contactId: string; channel: ContactChannel; note: string; followUpOn: string | null };
   FOLLOW_UP_DONE: { contactId: string };

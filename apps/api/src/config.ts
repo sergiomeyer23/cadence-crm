@@ -23,6 +23,7 @@ const envSchema = z
     COOKIE_SAME_SITE: z.enum(['lax', 'strict', 'none']).default('lax'),
     CORS_ORIGIN: origins,
     TRUST_PROXY: z.stringbool().default(false),
+    PUBLIC_LEADS_PER_MINUTE: z.coerce.number().int().positive().default(10),
     BULL_BOARD_USER: z.string().min(1),
     BULL_BOARD_PASSWORD: z.string().min(8),
   })
@@ -42,6 +43,7 @@ export function loadConfig() {
     cookie: { secure: env.COOKIE_SECURE, sameSite: env.COOKIE_SAME_SITE },
     corsOrigins: env.CORS_ORIGIN,
     trustProxy: env.TRUST_PROXY,
+    publicLeadsPerMinute: env.PUBLIC_LEADS_PER_MINUTE,
     bullBoard: { user: env.BULL_BOARD_USER, password: env.BULL_BOARD_PASSWORD },
     rule: loadFrequencyRule(),
   };

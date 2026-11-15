@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exemplo de site de academia com o widget do Cadence CRM</title>
+    <style>
+      body { margin: 0; font-family: Georgia, serif; background: #f5f1ea; color: #2b2118; }
+      header { padding: 48px 24px 24px; text-align: center; }
+      header h1 { margin: 0; font-size: 34px; }
+      header p { margin: 8px 0 0; font-size: 18px; }
+      main { display: flex; justify-content: center; padding: 0 24px 48px; }
+      .missing { max-width: 420px; font-family: system-ui, sans-serif; background: #fff3cd; padding: 16px; border-radius: 8px; }
+      cadence-lead-widget { --cadence-accent: #b45309; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Academia de exemplo</h1>
+      <p>Esta página imita o site de uma academia. O CSS dela não afeta o formulário.</p>
+    </header>
+    <main id="slot"></main>
+    <script src="/embed/cadence-widget.js"></script>
+    <script>
+      // O ID do workspace vem da URL: /embed/demo.html?workspace=ID
+      var workspaceId = new URLSearchParams(location.search).get('workspace');
+      var slot = document.getElementById('slot');
+      if (workspaceId) {
+        var widget = document.createElement('cadence-lead-widget');
+        widget.setAttribute('workspace-id', workspaceId);
+        widget.setAttribute('source', 'pagina-de-exemplo');
+        slot.appendChild(widget);
+      } else {
+        slot.innerHTML =
+          '<p class="missing">Abra esta página com <code>?workspace=ID</code>. O ID aparece no botão "Widget do site" do Cadence CRM.</p>';
+      }
+    </script>
+  </body>
+</html>
