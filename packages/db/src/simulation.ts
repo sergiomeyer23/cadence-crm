@@ -14,6 +14,16 @@ export function seededRng(seed: number): Rng {
   };
 }
 
+/** Semente estável a partir de um texto (FNV-1a de 32 bits). */
+export function rngFor(key: string): Rng {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < key.length; i++) {
+    hash ^= key.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return seededRng(hash);
+}
+
 /** Na demo, um contato recente traz o aluno de volta com boa chance. */
 export const RECENT_CONTACT_DAYS = 10;
 const CONTACTED_ATTENDANCE = 0.85;

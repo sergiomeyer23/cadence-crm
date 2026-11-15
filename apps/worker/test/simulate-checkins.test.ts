@@ -46,6 +46,26 @@ describe('simulate-checkins', () => {
     }
   });
 
+  it('sorteia os mesmos treinos para a mesma semana do mesmo workspace', async () => {
+    const { workspace, coach } = await createWorkspace(db);
+    for (const name of ['Ana', 'Bruno', 'Carla']) {
+      await createStudent(db, { workspaceId: workspace.id, coachId: coach.id, name, weeklyGoal: 3, simProfile: 'IRREGULAR' });
+    }
+    const run = async () => {
+      await simulateWeek(db, { workspaceId: workspace.id, fromOffsetDays: 0 }, { realNow: NOW });
+      const rows = await db.select().from(checkIns).where(eq(checkIns.workspaceId, workspace.id));
+      return rows.map((r) => `${r.studentId}@${r.occurredAt.toISOString()}`).sort();
+    };
+
+    const first = await run();
+    await db.delete(checkIns).where(eq(checkIns.workspaceId, workspace.id));
+    await db.update(workspaces).set({ clockOffsetDays: 0 }).where(eq(workspaces.id, workspace.id));
+    const second = await run();
+
+    expect(first.length).toBeGreaterThan(0);
+    expect(second).toEqual(first);
+  });
+
   it('não gera treinos para aluno pausado', async () => {
     const { workspace } = await createWorkspace(db);
     await createStudent(db, {

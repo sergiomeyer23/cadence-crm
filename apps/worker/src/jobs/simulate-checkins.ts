@@ -4,6 +4,7 @@ import {
   checkIns,
   contacts,
   planCheckIns,
+  rngFor,
   students,
   timelineEvent,
   timelineEvents,
@@ -34,7 +35,8 @@ export async function simulateWeek(
   data: SimulateCheckInsJobData,
   options: { rng?: Rng; realNow?: Date } = {},
 ): Promise<SimulationResult> {
-  const rng = options.rng ?? Math.random;
+  // A mesma semana do mesmo workspace sempre sorteia os mesmos treinos.
+  const rng = options.rng ?? rngFor(`${data.workspaceId}:${data.fromOffsetDays}`);
   const realNow = options.realNow ?? new Date();
   const toOffsetDays = data.fromOffsetDays + 7;
 
