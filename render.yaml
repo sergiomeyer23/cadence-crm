@@ -1,0 +1,66 @@
+# Blueprint do Render: Postgres, Redis (Key Value), API e worker.
+# A web vai para a Vercel (apps/web/vercel.json). Depois de criar os serviços,
+# preencha CORS_ORIGIN com o domínio da web na Vercel.
+databases:
+  - name: cadence-db
+    plan: free
+    databaseName: cadence
+    user: cadence
+
+services:
+  - type: keyvalue
+    name: cadence-redis
+    plan: free
+    # O BullMQ perde jobs se o Redis descartar chaves por falta de memória.
+    maxmemoryPolicy: noeviction
+    # Lista vazia: só os serviços do Render acessam.
+    ipAllowList: []
+
+  - type: web
+    name: cadence-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cadence-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: cadence-redis
+          property: connectionString
+      - key: TRUST_PROXY
+        value: "true"
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAME_SITE
+        value: lax
+      - key: CORS_ORIGIN
+        sync: false
+      - key: BULL_BOARD_USER
+        value: admin
+      - key: BULL_BOARD_PASSWORD
+        generateValue: true
+
+  # O Render não tem plano gratuito para background workers.
+  - type: worker
+    name: cadence-worker
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: node worker/dist/index.js
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cadence-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: cadence-redis
+          property: connectionString

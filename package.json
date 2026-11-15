@@ -16,15 +16,19 @@
   },
   "scripts": {
     "dev": "pnpm --parallel --filter \"./apps/*\" dev",
+    "bootstrap": "docker compose up -d --wait && pnpm db:migrate && pnpm db:seed",
     "db:generate": "pnpm --filter @cadence/db generate",
     "db:migrate": "pnpm --filter @cadence/db migrate",
     "db:seed": "pnpm --filter @cadence/db seed",
     "test": "pnpm -r --workspace-concurrency=1 test",
     "typecheck": "pnpm -r typecheck",
-    "build": "pnpm --filter @cadence/web build"
+    "build": "pnpm typecheck && pnpm -r --filter \"./apps/*\" build",
+    "start:api": "pnpm --filter @cadence/api start",
+    "start:worker": "pnpm --filter @cadence/worker start"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
+    "esbuild": "^0.28.2",
     "tsx": "^4.23.15",
     "typescript": "~5.9.3",
     "vitest": "^5.1.0"

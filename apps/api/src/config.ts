@@ -17,7 +17,9 @@ const envSchema = z
   .object({
     DATABASE_URL: z.string().min(1),
     REDIS_URL: z.string().min(1),
-    API_PORT: z.coerce.number().int().positive().default(3333),
+    API_PORT: z.coerce.number().int().positive().optional(),
+    // Render e Railway informam a porta em PORT.
+    PORT: z.coerce.number().int().positive().optional(),
     SESSION_TTL_HOURS: z.coerce.number().positive().default(12),
     COOKIE_SECURE: z.stringbool().default(false),
     COOKIE_SAME_SITE: z.enum(['lax', 'strict', 'none']).default('lax'),
@@ -38,7 +40,7 @@ export function loadConfig() {
   return {
     databaseUrl: env.DATABASE_URL,
     redisUrl: env.REDIS_URL,
-    port: env.API_PORT,
+    port: env.API_PORT ?? env.PORT ?? 3333,
     sessionTtlMs: env.SESSION_TTL_HOURS * 3_600_000,
     cookie: { secure: env.COOKIE_SECURE, sameSite: env.COOKIE_SAME_SITE },
     corsOrigins: env.CORS_ORIGIN,

@@ -1,14 +1,25 @@
 import { resolveFrequencyRule, type FrequencyRuleConfig } from '@cadence/shared';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-
-/** Carrega o .env da raiz do monorepo sem sobrescrever variáveis já definidas. */
+/**
+ * Carrega o .env da raiz do monorepo sem sobrescrever variáveis já definidas.
+ * A raiz é procurada a partir do diretório atual, e não do arquivo, porque
+ * depois do build este código vive dentro do dist de cada app. Fora do
+ * monorepo (num container, por exemplo) nada é carregado.
+ */
 export function loadEnv(): void {
-  const file = join(repoRoot, '.env');
-  if (existsSync(file)) process.loadEnvFile(file);
+  let dir = process.cwd();
+  for (;;) {
+    if (existsSync(join(dir, 'pnpm-workspace.yaml'))) {
+      const file = join(dir, '.env');
+      if (existsSync(file)) process.loadEnvFile(file);
+      return;
+    }
+    const parent = dirname(dir);
+    if (parent === dir) return;
+    dir = parent;
+  }
 }
 
 export function requireEnv(name: string): string {

@@ -17,3 +17,6 @@ coverage/
 
 .claude/
 CLAUDE.md
+
+# Cópia das migrations gerada pelo build da API
+apps/api/drizzle/

@@ -1,0 +1,9 @@
+**/node_modules
+**/dist
+apps/api/drizzle
+.git
+.env
+.env.*
+!.env.example
+*.log
+coverage

@@ -17,6 +17,8 @@ export type Db = ReturnType<typeof createDb>['db'];
 /** Aceita tanto a conexão quanto uma transação aberta. */
 export type Executor = PgDatabase<PostgresJsQueryResultHKT, typeof schema>;
 
+// Em desenvolvimento aponta para packages/db/drizzle. No bundle da API, o build
+// copia as migrations para apps/api/drizzle, que fica no mesmo lugar relativo.
 const migrationsFolder = join(dirname(fileURLToPath(import.meta.url)), '..', 'drizzle');
 
 export async function runMigrations(url: string): Promise<void> {
