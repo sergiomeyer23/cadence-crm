@@ -1,0 +1,20 @@
+{
+  "name": "@retention/worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "start": "tsx src/index.ts",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@retention/db": "workspace:*",
+    "@retention/shared": "workspace:*",
+    "bullmq": "^6.7.6",
+    "drizzle-orm": "^0.45.4",
+    "ioredis": "^5.11.1",
+    "zod": "^4.6.7"
+  }
+}

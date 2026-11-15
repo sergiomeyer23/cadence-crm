@@ -132,4 +132,6 @@ export interface SimulateCheckInsJobData {
 export interface WorkspaceJobData {
   /** Sem workspace, o job processa todos. */
   workspaceId?: string;
+  /** Depois da análise disparada pela simulação, gera o relatório da semana simulada. */
+  reportAfter?: boolean;
 }
