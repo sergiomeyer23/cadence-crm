@@ -70,14 +70,17 @@ export async function evaluateStudents(
 
   return rows.map((student) => {
     const lastCheckInAt = lastByStudent.get(student.id) ?? null;
-    const history = byStudent.get(student.id) ?? [];
+    const inWindow = byStudent.get(student.id) ?? [];
+    // O último check-in só entra à parte quando caiu antes da janela; dentro
+    // dela ele já veio na primeira consulta e contaria duas vezes.
+    const history = lastCheckInAt && lastCheckInAt < windowStart ? [...inWindow, lastCheckInAt] : inWindow;
     const evaluation = evaluateFrequency(
       {
         now,
         weeklyGoal: student.weeklyGoal,
         trackingSince: student.trackingSince,
         paused: student.pausedAt !== null,
-        checkIns: lastCheckInAt ? [...history, lastCheckInAt] : history,
+        checkIns: history,
       },
       rule,
     );
