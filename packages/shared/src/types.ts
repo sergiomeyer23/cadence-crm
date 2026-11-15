@@ -122,3 +122,14 @@ export interface SimulationStarted {
   jobId: string;
   fromOffsetDays: number;
 }
+
+export interface SimulateCheckInsJobData {
+  workspaceId: string;
+  /** Deslocamento do relógio no momento do clique; evita simular a mesma semana duas vezes. */
+  fromOffsetDays: number;
+}
+
+export interface WorkspaceJobData {
+  /** Sem workspace, o job processa todos. */
+  workspaceId?: string;
+}

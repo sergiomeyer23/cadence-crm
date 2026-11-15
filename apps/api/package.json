@@ -1,0 +1,23 @@
+{
+  "name": "@retention/api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@bull-board/api": "^9.13.1",
+    "@bull-board/fastify": "^9.13.1",
+    "@fastify/cookie": "^11.1.5",
+    "@retention/db": "workspace:*",
+    "@retention/shared": "workspace:*",
+    "bullmq": "^6.7.6",
+    "drizzle-orm": "^0.45.4",
+    "fastify": "^5.12.8",
+    "ioredis": "^5.11.1",
+    "zod": "^4.6.7"
+  }
+}
