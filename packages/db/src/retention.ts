@@ -90,6 +90,7 @@ export async function evaluateStudents(
 
 export interface StatusChange {
   studentId: string;
+  name: string;
   from: RetentionStatus;
   to: RetentionStatus;
 }
@@ -129,7 +130,9 @@ export async function runRetentionAnalysis(
     for (const { student, evaluation } of evaluations) {
       if (evaluation.status === student.status) continue;
       const changed = await applyStatusChange(db, student, evaluation, now);
-      if (changed) result.changes.push({ studentId: student.id, from: student.status, to: evaluation.status });
+      if (changed) {
+        result.changes.push({ studentId: student.id, name: student.name, from: student.status, to: evaluation.status });
+      }
     }
   }
 

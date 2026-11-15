@@ -33,7 +33,6 @@ export function toSessionUser(auth: AuthContext): SessionUser {
   };
 }
 
-/** Garante que a rota só rode com sessão válida e devolve o contexto já tipado. */
 export function authOf(request: FastifyRequest): AuthContext {
   if (!request.auth) throw new HttpError(401, 'Faça login para continuar.');
   return request.auth;

@@ -48,7 +48,6 @@ export const DEFAULT_FREQUENCY_RULE: FrequencyRuleConfig = Object.freeze({
   newStudentDays: 7,
 });
 
-/** Aplica ajustes parciais sobre os valores padrão e valida o resultado. */
 export function resolveFrequencyRule(overrides: Partial<FrequencyRuleConfig> = {}): FrequencyRuleConfig {
   return frequencyRuleConfigSchema.parse({ ...DEFAULT_FREQUENCY_RULE, ...overrides });
 }
