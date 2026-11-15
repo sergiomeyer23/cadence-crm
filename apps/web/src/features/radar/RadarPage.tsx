@@ -1,3 +1,4 @@
+import { BRAND_NAME, BRAND_SUBTITLE, CadenceMark } from '@/components/brand';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { api } from '@/lib/api';
@@ -5,7 +6,7 @@ import { formatLongDate, plural } from '@/lib/format';
 import { useRadar } from '@/lib/queries';
 import { useQueryClient } from '@tanstack/react-query';
 import type { RadarScope, SessionUser } from '@cadence/shared';
-import { Dumbbell, LoaderCircle, LogOut, UserPlus } from 'lucide-react';
+import { LoaderCircle, LogOut, UserPlus } from 'lucide-react';
 import { useState } from 'react';
 import { StudentFormDialog } from '../student/StudentFormDialog';
 import { StudentSheet } from '../student/StudentSheet';
@@ -35,22 +36,22 @@ export function RadarPage({ user }: { user: SessionUser }) {
     <div className="min-h-screen">
       <header className="border-b bg-card">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-4 px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="grid size-9 place-items-center rounded-lg bg-primary text-primary-foreground">
-              <Dumbbell className="size-4" />
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
+              <CadenceMark />
+              <div>
+                <h1 className="font-semibold leading-tight tracking-tight">{BRAND_NAME}</h1>
+                <p className="text-xs text-muted-foreground">{BRAND_SUBTITLE}</p>
+              </div>
             </div>
-            <div>
-              <h1 className="font-semibold leading-tight">Radar de retenção</h1>
-              <p className="text-sm text-muted-foreground">
-                {user.workspace.name}
-                {clock && (
-                  <>
-                    {' · '}
-                    {formatLongDate(clock.now)}
-                    {clock.simulatedWeeks > 0 && ` (${plural(clock.simulatedWeeks, 'semana simulada', 'semanas simuladas')})`}
-                  </>
-                )}
-              </p>
+            <div className="hidden border-l pl-4 sm:block">
+              <p className="text-sm font-medium leading-tight">{user.workspace.name}</p>
+              {clock && (
+                <p className="text-xs text-muted-foreground">
+                  {formatLongDate(clock.now)}
+                  {clock.simulatedWeeks > 0 && ` (${plural(clock.simulatedWeeks, 'semana simulada', 'semanas simuladas')})`}
+                </p>
+              )}
             </div>
           </div>
 

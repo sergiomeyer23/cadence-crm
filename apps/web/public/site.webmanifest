@@ -1,0 +1,9 @@
+{
+  "name": "Cadence CRM",
+  "short_name": "Cadence",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#090D16",
+  "background_color": "#090D16",
+  "icons": [{ "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }]
+}

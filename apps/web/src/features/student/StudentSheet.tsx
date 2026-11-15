@@ -74,7 +74,7 @@ function Metric({ label, value, hint }: { label: string; value: string; hint?: s
   return (
     <div className="rounded-lg border bg-muted/40 px-3 py-2">
       <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="text-lg font-semibold leading-tight">{value}</p>
+      <p className="text-lg font-semibold leading-tight tabular-nums">{value}</p>
       {hint && <p className="text-[11px] text-muted-foreground">{hint}</p>}
     </div>
   );

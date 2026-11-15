@@ -39,8 +39,8 @@ export const STATUS_STYLE: Record<RetentionStatus, StatusStyle> = {
     title: 'Pausa por lesão',
     hint: 'Fora da avaliação até retomar',
     icon: Bandage,
-    column: 'bg-sky-50/70 border-sky-100',
-    accent: 'text-sky-700',
-    badge: 'bg-sky-100 text-sky-800 border-sky-200',
+    column: 'bg-cyan-50/70 border-cyan-100',
+    accent: 'text-cyan-700',
+    badge: 'bg-cyan-100 text-cyan-800 border-cyan-200',
   },
 };

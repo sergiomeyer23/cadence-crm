@@ -1,10 +1,11 @@
+import { BRAND_NAME, BRAND_SUBTITLE, CadenceMark } from '@/components/brand';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { api } from '@/lib/api';
 import { keys } from '@/lib/queries';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Dumbbell, LoaderCircle } from 'lucide-react';
+import { LoaderCircle } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 
 const DEMO_ACCOUNTS = [
@@ -29,19 +30,17 @@ export function LoginPage() {
   }
 
   return (
-    <div className="grid min-h-screen place-items-center px-4">
+    <div className="grid min-h-screen place-items-center bg-[#090D16] px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 flex items-center gap-3">
-          <div className="grid size-10 place-items-center rounded-lg bg-primary text-primary-foreground">
-            <Dumbbell className="size-5" />
-          </div>
+          <CadenceMark className="size-12 rounded-2xl ring-1 ring-white/10" />
           <div>
-            <h1 className="text-lg font-semibold leading-tight">Retention Gym CRM</h1>
-            <p className="text-sm text-muted-foreground">Acompanhe quem está deixando de treinar</p>
+            <h1 className="text-xl font-semibold leading-tight tracking-tight text-white">{BRAND_NAME}</h1>
+            <p className="text-sm text-slate-400">{BRAND_SUBTITLE}</p>
           </div>
         </div>
 
-        <form onSubmit={submit} className="space-y-4 rounded-xl border bg-card p-6 shadow-sm">
+        <form onSubmit={submit} className="space-y-4 rounded-xl bg-card p-6 shadow-lg shadow-black/40">
           <div className="space-y-2">
             <Label htmlFor="email">E-mail</Label>
             <Input id="email" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required />
@@ -66,7 +65,7 @@ export function LoginPage() {
 
         {import.meta.env.DEV && (
           <div className="mt-6 space-y-2 text-sm">
-            <p className="text-muted-foreground">Contas da demonstração (senha {DEMO_PASSWORD}):</p>
+            <p className="text-slate-400">Contas da demonstração (senha {DEMO_PASSWORD}):</p>
             {DEMO_ACCOUNTS.map((account) => (
               <button
                 key={account.email}
@@ -75,10 +74,10 @@ export function LoginPage() {
                   setEmail(account.email);
                   setPassword(DEMO_PASSWORD);
                 }}
-                className="block w-full rounded-md border border-dashed px-3 py-2 text-left hover:bg-accent"
+                className="block w-full rounded-md border border-dashed border-slate-700 px-3 py-2 text-left text-slate-200 hover:bg-white/5"
               >
                 <span className="font-medium">{account.who}</span>
-                <span className="text-muted-foreground">, {account.role}</span>
+                <span className="text-slate-400">, {account.role}</span>
               </button>
             ))}
           </div>

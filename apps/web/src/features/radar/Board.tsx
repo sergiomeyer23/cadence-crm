@@ -25,7 +25,7 @@ export function Board({ radar, showCoach, moved, onOpen }: BoardProps) {
                 <h2 className="text-sm font-semibold">{style.title}</h2>
                 <span className="text-xs text-muted-foreground">{status}</span>
               </div>
-              <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold', style.badge)}>{cards.length}</span>
+              <span className={cn('rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums', style.badge)}>{cards.length}</span>
             </header>
             <p className="px-4 pb-3 text-xs text-muted-foreground">{style.hint}</p>
             <div className="flex max-h-[calc(100vh-17rem)] flex-col gap-2 overflow-y-auto px-3 pb-3">
