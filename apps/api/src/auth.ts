@@ -6,7 +6,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import type { AppConfig } from './config';
 import { HttpError } from './errors';
 
-const SESSION_COOKIE = 'rg_session';
+const SESSION_COOKIE = 'cadence_session';
 
 export interface AuthContext {
   sessionId: string;
@@ -43,6 +43,7 @@ export async function requireAuth(request: FastifyRequest): Promise<void> {
 }
 
 export function registerAuth(app: FastifyInstance, db: Db, config: AppConfig): void {
+  const cookieOptions = { path: '/', httpOnly: true, ...config.cookie };
   app.decorateRequest('auth', null);
 
   app.addHook('onRequest', async (request) => {
@@ -70,19 +71,13 @@ export function registerAuth(app: FastifyInstance, db: Db, config: AppConfig): v
     await db.insert(sessions).values({ id: hashToken(token), userId: user.id, expiresAt });
 
     const [workspace] = await db.select().from(workspaces).where(eq(workspaces.id, user.workspaceId));
-    reply.setCookie(SESSION_COOKIE, token, {
-      path: '/',
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: config.cookieSecure,
-      expires: expiresAt,
-    });
+    reply.setCookie(SESSION_COOKIE, token, { ...cookieOptions, expires: expiresAt });
     return toSessionUser({ sessionId: hashToken(token), user, workspace: workspace! });
   });
 
   app.post('/api/auth/logout', async (request, reply) => {
     if (request.auth) await db.delete(sessions).where(eq(sessions.id, request.auth.sessionId));
-    reply.clearCookie(SESSION_COOKIE, { path: '/' });
+    reply.clearCookie(SESSION_COOKIE, cookieOptions);
     return reply.code(204).send();
   });
 

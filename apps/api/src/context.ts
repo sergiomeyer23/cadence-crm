@@ -2,6 +2,7 @@ import { runRetentionAnalysis, students, users, type Db, type Executor } from '@
 import { workspaceNow } from '@cadence/shared';
 import { and, eq, isNull } from 'drizzle-orm';
 import type { FastifyRequest } from 'fastify';
+import type { Redis } from 'ioredis';
 import { z } from 'zod';
 import { authOf, type AuthContext } from './auth';
 import type { AppConfig } from './config';
@@ -11,6 +12,8 @@ import type { Queues } from './queues';
 export interface Deps {
   db: Db;
   queues: Queues;
+  /** Conexão própria da API, usada no health check e no rate limit. */
+  redis: Redis;
   config: AppConfig;
 }
 

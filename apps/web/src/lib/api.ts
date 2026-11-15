@@ -23,10 +23,13 @@ export class ApiError extends Error {
   }
 }
 
+// Vazio quando a web e a API ficam no mesmo domínio (proxy do Vite ou rewrites da Vercel).
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/$/, '');
+
 async function request<T>(method: string, path: string, body?: unknown): Promise<T> {
-  const response = await fetch(path, {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
     method,
-    credentials: 'same-origin',
+    credentials: 'include',
     headers: body === undefined ? undefined : { 'content-type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body),
   });

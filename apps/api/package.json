@@ -18,9 +18,11 @@
   "dependencies": {
     "@bull-board/api": "^9.13.1",
     "@bull-board/fastify": "^9.13.1",
-    "@fastify/cookie": "^11.1.5",
     "@cadence/db": "workspace:*",
     "@cadence/shared": "workspace:*",
+    "@fastify/cookie": "^11.1.5",
+    "@fastify/cors": "^11.4.3",
+    "@fastify/rate-limit": "^11.2.2",
     "bullmq": "^6.7.6",
     "drizzle-orm": "^0.45.4",
     "fastify": "^5.12.8",
