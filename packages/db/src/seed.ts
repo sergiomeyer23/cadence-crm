@@ -9,7 +9,7 @@ import {
   type RetentionStatus,
   type SimProfile,
   type WorkspaceKind,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import type { Db } from './client';

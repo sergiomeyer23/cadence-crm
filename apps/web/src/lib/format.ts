@@ -5,7 +5,7 @@ import type {
   RetentionStatus,
   StatusReason,
   TimelineItem,
-} from '@retention/shared';
+} from '@cadence/shared';
 
 export const STATUS_LABEL: Record<RetentionStatus, string> = {
   ACTIVE: 'Ativo',

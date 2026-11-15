@@ -1,4 +1,4 @@
-import type { TimelineEventType, TimelinePayloads } from '@retention/shared';
+import type { TimelineEventType, TimelinePayloads } from '@cadence/shared';
 import type { Executor } from './client';
 import { timelineEvents, type NewTimelineEvent } from './schema';
 

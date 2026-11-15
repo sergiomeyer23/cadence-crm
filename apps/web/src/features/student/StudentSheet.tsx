@@ -15,7 +15,7 @@ import {
 } from '@/lib/format';
 import { useStudent, useStudentMutation, useTimeline } from '@/lib/queries';
 import { cn } from '@/lib/utils';
-import type { SessionUser, StudentDetail } from '@retention/shared';
+import type { SessionUser, StudentDetail } from '@cadence/shared';
 import { Archive, Bandage, CalendarClock, CirclePlay, Dumbbell, LoaderCircle, Mail, Pencil, Phone } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
 import { STATUS_STYLE } from '../radar/status';

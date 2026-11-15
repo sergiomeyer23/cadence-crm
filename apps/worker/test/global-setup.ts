@@ -1,4 +1,4 @@
-import { loadEnv, runMigrations } from '@retention/db';
+import { loadEnv, runMigrations } from '@cadence/db';
 
 export default async function setup() {
   loadEnv();

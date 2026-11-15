@@ -1,11 +1,11 @@
-import { contacts, evaluateStudents, users, type Executor, type StudentEvaluation, type Workspace } from '@retention/db';
+import { contacts, evaluateStudents, users, type Executor, type StudentEvaluation, type Workspace } from '@cadence/db';
 import {
   toLocalDate,
   type FrequencyRuleConfig,
   type OpenFollowUp,
   type RadarCard,
   type StudentDetail,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { and, asc, eq, inArray, isNotNull, isNull } from 'drizzle-orm';
 
 const round1 = (value: number) => Math.round(value * 10) / 10;

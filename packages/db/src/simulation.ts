@@ -1,4 +1,4 @@
-import { DAY_MS, addDaysToLocalDate, startOfLocalDay, toLocalDate, type SimProfile } from '@retention/shared';
+import { DAY_MS, addDaysToLocalDate, startOfLocalDay, toLocalDate, type SimProfile } from '@cadence/shared';
 
 export type Rng = () => number;
 

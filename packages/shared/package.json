@@ -1,6 +1,13 @@
 {
-  "name": "@retention/shared",
+  "name": "@cadence/shared",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Sérgio Gabriel Meyer Camargo (https://github.com/sergiomeyer23)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiomeyer23/cadence-crm.git",
+    "directory": "packages/shared"
+  },
   "private": true,
   "type": "module",
   "sideEffects": false,

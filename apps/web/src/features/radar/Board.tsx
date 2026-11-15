@@ -1,4 +1,4 @@
-import { RETENTION_STATUSES, type RadarResponse, type RetentionStatus } from '@retention/shared';
+import { RETENTION_STATUSES, type RadarResponse, type RetentionStatus } from '@cadence/shared';
 import { cn } from '@/lib/utils';
 import { STATUS_STYLE } from './status';
 import { StudentCard } from './StudentCard';

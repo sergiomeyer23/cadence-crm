@@ -1,5 +1,5 @@
-import { createDb } from '@retention/db';
-import { QUEUE_NAMES, type SimulateCheckInsJobData, type WorkspaceJobData } from '@retention/shared';
+import { createDb } from '@cadence/db';
+import { QUEUE_NAMES, type SimulateCheckInsJobData, type WorkspaceJobData } from '@cadence/shared';
 import { Queue, Worker, type Job } from 'bullmq';
 import { loadConfig } from './config';
 import { handleRetentionAnalysis } from './jobs/retention-analysis';

@@ -1,4 +1,4 @@
-import type { RadarScope } from '@retention/shared';
+import type { RadarScope } from '@cadence/shared';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from './api';
 

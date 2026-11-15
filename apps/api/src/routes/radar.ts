@@ -1,4 +1,4 @@
-import { users, weeklyReports } from '@retention/db';
+import { users, weeklyReports } from '@cadence/db';
 import {
   RETENTION_STATUSES,
   radarQuerySchema,
@@ -8,7 +8,7 @@ import {
   type SimulationStarted,
   type TeamMember,
   type WeeklyReport,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { asc, desc, eq } from 'drizzle-orm';
 import type { FastifyInstance } from 'fastify';
 import { buildCards } from '../cards';

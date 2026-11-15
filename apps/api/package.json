@@ -1,6 +1,13 @@
 {
-  "name": "@retention/api",
+  "name": "@cadence/api",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Sérgio Gabriel Meyer Camargo (https://github.com/sergiomeyer23)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiomeyer23/cadence-crm.git",
+    "directory": "apps/api"
+  },
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,8 +19,8 @@
     "@bull-board/api": "^9.13.1",
     "@bull-board/fastify": "^9.13.1",
     "@fastify/cookie": "^11.1.5",
-    "@retention/db": "workspace:*",
-    "@retention/shared": "workspace:*",
+    "@cadence/db": "workspace:*",
+    "@cadence/shared": "workspace:*",
     "bullmq": "^6.7.6",
     "drizzle-orm": "^0.45.4",
     "fastify": "^5.12.8",

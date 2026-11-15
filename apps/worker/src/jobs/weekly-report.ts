@@ -1,4 +1,4 @@
-import { checkIns, contacts, students, timelineEvents, weeklyReports, workspaces, type Db, type Workspace } from '@retention/db';
+import { checkIns, contacts, students, timelineEvents, weeklyReports, workspaces, type Db, type Workspace } from '@cadence/db';
 import {
   DAY_MS,
   RETENTION_STATUSES,
@@ -7,7 +7,7 @@ import {
   workspaceNow,
   type RetentionStatus,
   type WeeklyReportData,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { and, count, eq, gt, isNull, lte, notExists, sql } from 'drizzle-orm';
 import type { AnyPgColumn } from 'drizzle-orm/pg-core';
 

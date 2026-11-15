@@ -1,5 +1,5 @@
-import { sessions, users, verifyPassword, workspaces, type Db, type User, type Workspace } from '@retention/db';
-import { loginSchema, type SessionUser } from '@retention/shared';
+import { sessions, users, verifyPassword, workspaces, type Db, type User, type Workspace } from '@cadence/db';
+import { loginSchema, type SessionUser } from '@cadence/shared';
 import { and, eq, gt, lt } from 'drizzle-orm';
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { createHash, randomBytes } from 'node:crypto';

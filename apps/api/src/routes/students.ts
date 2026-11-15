@@ -1,4 +1,4 @@
-import { checkIns, contacts, recordEvent, students, timelineEvents, users } from '@retention/db';
+import { checkIns, contacts, recordEvent, students, timelineEvents, users } from '@cadence/db';
 import {
   DAY_MS,
   checkInCreateSchema,
@@ -11,7 +11,7 @@ import {
   toLocalDate,
   type StudentDetail,
   type TimelineItem,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { and, desc, eq, isNotNull, isNull } from 'drizzle-orm';
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';

@@ -12,7 +12,7 @@ import type {
   TeamMember,
   TimelineItem,
   WeeklyReport,
-} from '@retention/shared';
+} from '@cadence/shared';
 
 export class ApiError extends Error {
   constructor(

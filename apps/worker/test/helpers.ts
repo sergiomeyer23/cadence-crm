@@ -1,5 +1,5 @@
-import { createDb, hashPassword, loadEnv, students, users, workspaces, type Db, type NewStudent } from '@retention/db';
-import { DAY_MS } from '@retention/shared';
+import { createDb, hashPassword, loadEnv, students, users, workspaces, type Db, type NewStudent } from '@cadence/db';
+import { DAY_MS } from '@cadence/shared';
 import { sql } from 'drizzle-orm';
 
 loadEnv();

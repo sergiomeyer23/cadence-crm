@@ -1,7 +1,7 @@
 import { Badge } from '@/components/ui/badge';
 import { STATUS_LABEL, absenceText, formatLocalDate, frequencyText } from '@/lib/format';
 import { cn } from '@/lib/utils';
-import type { RadarCard, RetentionStatus } from '@retention/shared';
+import type { RadarCard, RetentionStatus } from '@cadence/shared';
 import { CalendarClock } from 'lucide-react';
 
 interface StudentCardProps {

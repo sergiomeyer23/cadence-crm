@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { api } from '@/lib/api';
 import { useStudentMutation, useTeam } from '@/lib/queries';
-import { toLocalDate, type StudentDetail } from '@retention/shared';
+import { toLocalDate, type StudentDetail } from '@cadence/shared';
 import { LoaderCircle } from 'lucide-react';
 import { useEffect, useState, type FormEvent } from 'react';
 

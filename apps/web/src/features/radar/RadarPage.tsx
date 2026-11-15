@@ -4,7 +4,7 @@ import { api } from '@/lib/api';
 import { formatLongDate, plural } from '@/lib/format';
 import { useRadar } from '@/lib/queries';
 import { useQueryClient } from '@tanstack/react-query';
-import type { RadarScope, SessionUser } from '@retention/shared';
+import type { RadarScope, SessionUser } from '@cadence/shared';
 import { Dumbbell, LoaderCircle, LogOut, UserPlus } from 'lucide-react';
 import { useState } from 'react';
 import { StudentFormDialog } from '../student/StudentFormDialog';

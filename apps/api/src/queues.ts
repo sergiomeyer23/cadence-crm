@@ -1,4 +1,4 @@
-import { QUEUE_NAMES, type SimulateCheckInsJobData, type WorkspaceJobData } from '@retention/shared';
+import { QUEUE_NAMES, type SimulateCheckInsJobData, type WorkspaceJobData } from '@cadence/shared';
 import { Queue } from 'bullmq';
 
 export function createQueues(redisUrl: string) {

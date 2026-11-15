@@ -29,15 +29,15 @@ importers:
       '@bull-board/fastify':
         specifier: ^9.13.1
         version: 9.13.1(bullmq@6.7.6(ioredis@5.11.1))(typescript@5.9.3)
+      '@cadence/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@cadence/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@fastify/cookie':
         specifier: ^11.1.5
         version: 11.1.5
-      '@retention/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@retention/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       bullmq:
         specifier: ^6.7.6
         version: 6.7.6(ioredis@5.11.1)
@@ -56,7 +56,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@retention/shared':
+      '@cadence/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@tanstack/react-query':
@@ -108,10 +108,10 @@ importers:
 
   apps/worker:
     dependencies:
-      '@retention/db':
+      '@cadence/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@retention/shared':
+      '@cadence/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       bullmq:
@@ -129,7 +129,7 @@ importers:
 
   packages/db:
     dependencies:
-      '@retention/shared':
+      '@cadence/shared':
         specifier: workspace:*
         version: link:../shared
       drizzle-orm:

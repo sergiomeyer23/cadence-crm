@@ -1,6 +1,13 @@
 {
-  "name": "@retention/worker",
+  "name": "@cadence/worker",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Sérgio Gabriel Meyer Camargo (https://github.com/sergiomeyer23)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiomeyer23/cadence-crm.git",
+    "directory": "apps/worker"
+  },
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +17,8 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@retention/db": "workspace:*",
-    "@retention/shared": "workspace:*",
+    "@cadence/db": "workspace:*",
+    "@cadence/shared": "workspace:*",
     "bullmq": "^6.7.6",
     "drizzle-orm": "^0.45.4",
     "ioredis": "^5.11.1",

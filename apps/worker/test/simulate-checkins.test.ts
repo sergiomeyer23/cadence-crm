@@ -1,4 +1,4 @@
-import { checkIns, seededRng, workspaces, type Db } from '@retention/db';
+import { checkIns, seededRng, workspaces, type Db } from '@cadence/db';
 import { eq } from 'drizzle-orm';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { simulateWeek } from '../src/jobs/simulate-checkins';

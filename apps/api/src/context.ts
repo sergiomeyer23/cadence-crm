@@ -1,5 +1,5 @@
-import { runRetentionAnalysis, students, users, type Db, type Executor } from '@retention/db';
-import { workspaceNow } from '@retention/shared';
+import { runRetentionAnalysis, students, users, type Db, type Executor } from '@cadence/db';
+import { workspaceNow } from '@cadence/shared';
 import { and, eq, isNull } from 'drizzle-orm';
 import type { FastifyRequest } from 'fastify';
 import { z } from 'zod';

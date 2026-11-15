@@ -1,5 +1,5 @@
-import { runRetentionAnalysis, type Db, type RetentionAnalysisResult } from '@retention/db';
-import type { FrequencyRuleConfig, WorkspaceJobData } from '@retention/shared';
+import { runRetentionAnalysis, type Db, type RetentionAnalysisResult } from '@cadence/db';
+import type { FrequencyRuleConfig, WorkspaceJobData } from '@cadence/shared';
 
 export interface RetentionAnalysisDeps {
   db: Db;

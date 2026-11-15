@@ -1,6 +1,13 @@
 {
-  "name": "retention-gym-crm",
+  "name": "cadence-crm",
+  "description": "Retention radar for gyms and personal trainers",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Sérgio Gabriel Meyer Camargo (https://github.com/sergiomeyer23)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiomeyer23/cadence-crm.git"
+  },
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.28.0",
@@ -9,12 +16,12 @@
   },
   "scripts": {
     "dev": "pnpm --parallel --filter \"./apps/*\" dev",
-    "db:generate": "pnpm --filter @retention/db generate",
-    "db:migrate": "pnpm --filter @retention/db migrate",
-    "db:seed": "pnpm --filter @retention/db seed",
+    "db:generate": "pnpm --filter @cadence/db generate",
+    "db:migrate": "pnpm --filter @cadence/db migrate",
+    "db:seed": "pnpm --filter @cadence/db seed",
     "test": "pnpm -r --workspace-concurrency=1 test",
     "typecheck": "pnpm -r typecheck",
-    "build": "pnpm --filter @retention/web build"
+    "build": "pnpm --filter @cadence/web build"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",

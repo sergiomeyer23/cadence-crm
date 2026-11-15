@@ -1,4 +1,4 @@
-import { createDb } from '@retention/db';
+import { createDb } from '@cadence/db';
 import { buildApp } from './app';
 import { loadConfig } from './config';
 import { createQueues } from './queues';

@@ -1,4 +1,4 @@
-import type { RadarResponse, RetentionStatus } from '@retention/shared';
+import type { RadarResponse, RetentionStatus } from '@cadence/shared';
 import { useEffect, useRef, useState } from 'react';
 
 const HIGHLIGHT_MS = 6_000;

@@ -1,4 +1,4 @@
-import { resolveFrequencyRule, type FrequencyRuleConfig } from '@retention/shared';
+import { resolveFrequencyRule, type FrequencyRuleConfig } from '@cadence/shared';
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { api } from '@/lib/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { WorkspaceClock } from '@retention/shared';
+import type { WorkspaceClock } from '@cadence/shared';
 import { FastForward, LoaderCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

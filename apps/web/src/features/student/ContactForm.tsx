@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { api } from '@/lib/api';
 import { CHANNEL_LABEL } from '@/lib/format';
 import { useStudentMutation } from '@/lib/queries';
-import { CONTACT_CHANNELS, toLocalDate, type ContactChannel } from '@retention/shared';
+import { CONTACT_CHANNELS, toLocalDate, type ContactChannel } from '@cadence/shared';
 import { LoaderCircle } from 'lucide-react';
 import { useState, type FormEvent } from 'react';
 

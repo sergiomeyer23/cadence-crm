@@ -1,6 +1,6 @@
 import { formatDateTime, timelineText } from '@/lib/format';
 import { cn } from '@/lib/utils';
-import type { TimelineEventType, TimelineItem } from '@retention/shared';
+import type { TimelineEventType, TimelineItem } from '@cadence/shared';
 import {
   Activity,
   Bandage,

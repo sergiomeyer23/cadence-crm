@@ -1,4 +1,4 @@
-import { loadEnv, loadFrequencyRule } from '@retention/db';
+import { loadEnv, loadFrequencyRule } from '@cadence/db';
 import { z } from 'zod';
 
 loadEnv();

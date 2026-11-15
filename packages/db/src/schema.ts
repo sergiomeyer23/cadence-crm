@@ -7,7 +7,7 @@ import {
   TIMELINE_EVENT_TYPES,
   WORKSPACE_KINDS,
   type WeeklyReportData,
-} from '@retention/shared';
+} from '@cadence/shared';
 import {
   date,
   index,

@@ -1,4 +1,4 @@
-import type { RetentionStatus } from '@retention/shared';
+import type { RetentionStatus } from '@cadence/shared';
 import { Activity, Bandage, Siren, TriangleExclamationPoint, type LucideIcon } from 'lucide-react';
 
 interface StatusStyle {

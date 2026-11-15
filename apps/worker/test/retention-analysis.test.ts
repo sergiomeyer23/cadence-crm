@@ -1,5 +1,5 @@
-import { checkIns, seedDatabase, students, timelineEvents, type Db } from '@retention/db';
-import { DEFAULT_FREQUENCY_RULE } from '@retention/shared';
+import { checkIns, seedDatabase, students, timelineEvents, type Db } from '@cadence/db';
+import { DEFAULT_FREQUENCY_RULE } from '@cadence/shared';
 import { and, eq } from 'drizzle-orm';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { handleRetentionAnalysis } from '../src/jobs/retention-analysis';

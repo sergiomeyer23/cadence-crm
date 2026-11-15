@@ -6,7 +6,7 @@ import {
   type FrequencyEvaluation,
   type FrequencyRuleConfig,
   type RetentionStatus,
-} from '@retention/shared';
+} from '@cadence/shared';
 import { and, eq, gte, inArray, isNull, lte, max } from 'drizzle-orm';
 import type { Db, Executor } from './client';
 import { checkIns, students, workspaces, type Student, type Workspace } from './schema';

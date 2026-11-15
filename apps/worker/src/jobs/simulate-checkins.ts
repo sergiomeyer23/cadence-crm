@@ -11,8 +11,8 @@ import {
   type Db,
   type NewTimelineEvent,
   type Rng,
-} from '@retention/db';
-import { DAY_MS, workspaceNow, type SimulateCheckInsJobData } from '@retention/shared';
+} from '@cadence/db';
+import { DAY_MS, workspaceNow, type SimulateCheckInsJobData } from '@cadence/shared';
 import { and, eq, gte, isNull, lte } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 
